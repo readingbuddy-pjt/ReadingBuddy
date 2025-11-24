@@ -180,7 +180,7 @@ MonoBehaviour:
   - name: "\uC74C\uC131 \uC548\uB0B4(\uC790 \uC6B0\uC120)"
     phase: 1
     action: 0
-    audioClip: {fileID: 8300000, guid: ff7954532af3fe748aa10e335c5945aa, type: 3}
+    audioClip: {fileID: 8300000, guid: 23757787844815c46af1dd10ac845436, type: 3}
     image: {fileID: 0}
     waitSeconds: 0
     panelImmediate: 0
