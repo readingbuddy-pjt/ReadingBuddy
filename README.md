@@ -2,6 +2,9 @@
 
 > 난독증 아동을 위한 VR 기반 한글 학습 시스템
 
+<img width="1040" height="577" alt="image" src="https://github.com/user-attachments/assets/f672d434-c39c-41de-bca5-ea3ca6f7be10" />
+
+
 ---
 
 ## 서비스 소개
@@ -51,26 +54,6 @@ AI 음성 인식 기술을 활용하여 자음과 모음 발음을 정확하게 
   - 베이스 모델 대비 2.5배 정확도 향상
 
 ---
-
-## 사용법
-
-### VR 학습 시작하기
-
-1. **VR 기기 착용 및 앱 실행**
-2. **모바일 앱에서 로그인 코드 입력** (4자리)
-3. **스테이지 선택 및 학습 시작**
-4. **발음 학습 진행**
-5. **학습 결과 확인 및 다음 단계 진행**
-
-### 모바일 앱 사용하기
-
-1. **회원가입 및 로그인**
-2. **VR 기기 연결** (코드 입력)
-3. **대시보드에서 학습 현황 확인**
-4. **취약 음소 분석으로 학습 포인트 파악**
-
----
-
 ## 기술 스택
 
 | Category | Technologies |
@@ -87,44 +70,24 @@ AI 음성 인식 기술을 활용하여 자음과 모음 발음을 정확하게 
 
 ## 시스템 아키텍처
 
-```
-                    ┌─────────────────────┐
-                    │   Client Layer      │
-                    └──────────┬──────────┘
-                               │
-              ┌────────────────┼────────────────┐
-              │                │                │
-    ┌─────────▼─────────┐      │      ┌────────▼─────────┐
-    │  VR (Unity)       │      │      │  Mobile (Flutter)│
-    │  - Learning Game  │      │      │  - Dashboard     │
-    │  - Voice Input    │      │      │  - Statistics    │
-    │  - Real Feedback  │      │      │  - VR Login      │
-    └─────────┬─────────┘      │      └────────┬─────────┘
-              │                │                │
-              └────────────────┼────────────────┘
-                               │
-              ┌────────────────┼────────────────┐
-              │                │                │
-    ┌─────────▼─────────┐      │      ┌────────▼─────────┐
-    │  Backend          │      │      │  AI Server       │
-    │  (Spring Boot)    │      │      │  (FastAPI)       │
-    │  - Auth (JWT)     │      │      │  - Wav2Vec2      │
-    │  - Data Mgmt      │      │      │  - LoRA          │
-    │  - Statistics     │      │      │  - Inference     │
-    │  - KC Tracking    │      │      │  - Phoneme Check │
-    └─────────┬─────────┘      │      └──────────────────┘
-              │                │
-              │                │
-    ┌─────────▼─────────┐      │
-    │  PostgreSQL       │      │
-    │  - User Data      │      │
-    │  - Learning Log   │      │
-    │  - KC Data        │      │
-    │  - VR Login Code  │      │
-    └───────────────────┘      │
-```
+<img width="977" height="799" alt="diagram-export-2026 -2 -25 -오전-1_26_45" src="https://github.com/user-attachments/assets/41ad90b8-0692-4ffa-a984-7e033c612e00" />
 
 ---
+
+## ERD
+
+<img width="2430" height="1012" alt="A206(Reading Buddy) ERD PUBLIC" src="https://github.com/user-attachments/assets/6530a183-d4ba-401f-9dd8-c3a9a83cdf12" />
+
+---
+
+## API 명세서
+
+<img width="1024" height="925" alt="image" src="https://github.com/user-attachments/assets/37d9cf36-16cf-4782-b887-78e3d56314e7" />
+<img width="1050" height="798" alt="image" src="https://github.com/user-attachments/assets/966bf35f-2e24-4853-86ca-00e23b56f06f" />
+<img width="1022" height="529" alt="image" src="https://github.com/user-attachments/assets/72dda966-4c7b-4a9f-81a8-7d504f60d93e" />
+
+
+
 
 ## 프로젝트 구조
 
@@ -195,76 +158,6 @@ S13P31A206/
 
 ---
 
-## 빠른 시작
-
-### 1. 저장소 클론
-
-```bash
-git clone https://lab.ssafy.com/s13-final/S13P31A206.git
-cd S13P31A206
-```
-
-### 2. 각 모듈 실행
-
-#### 모바일 앱
-```bash
-cd reading_buddy_app
-flutter pub get
-flutter run
-```
-
-#### AI 서버
-```bash
-cd ai
-docker-compose up -d
-```
-
-#### 백엔드
-```bash
-cd backend
-./gradlew bootRun
-```
-
-#### 모니터링
-```bash
-cd monitoring
-docker-compose up -d
-```
-
-자세한 실행 방법은 각 모듈의 README를 참고하세요.
-
----
-
-## 주요 성과
-
-### AI 모델 성능
-
-#### 1. LoRA Fine-tuning의 극적인 성능 향상
-- **PER (Phoneme Error Rate)**: 36.67% → 14.55% (60.3% 개선)
-- **CER (Character Error Rate)**: 26.40% → 10.51% (60.2% 개선)
-- **상대적 오류율 감소**: 60%
-- **실질적 의미**: 베이스 모델 대비 2.5배 정확도 향상
-
-#### 2. 목표 달성 여부
-- **LoRA r32 Final 모델**: 목표 달성 (PER < 15%)
-
-#### 3. 학습 방법 및 최적화
-- **학습 방법**: 3단계 Curriculum Learning (30h → 90h → 148h)
-- **최적화**: LoRA (r=32) - 효율적 파인튜닝
-- **데이터**: 한국어 어린이 음성 100시간으로 효과적인 도메인 적응 성공
-
-#### 4. 결론
-LoRA r32 fine-tuning이 아동 음성 인식에 매우 효과적임을 확인했습니다. 베이스 모델 단독으로는 실용화가 어려운 성능(PER 36.67%)이었지만, LoRA 파인튜닝 후 실용 수준(PER 14.55%)에 도달했습니다.
-
-### 난독증 아동 학습 효과
-- **음소 중심 접근**: 자음/모음을 개별적으로 학습하여 난독증 아동에게 효과적
-- **실시간 피드백**: 즉각적인 발음 교정으로 학습 동기 향상
-- **개인 맞춤형 학습**: BKT 기반 KC 숙련도 추적으로 각 아동의 속도에 맞춘 학습
-- **몰입형 VR 환경**: 게임화로 지루함 없이 반복 학습 가능
-- **취약 음소 집중**: 개인별로 어려워하는 자음/모음 집중 훈련
-
----
-
 ## 팀 구성
 
 ###  Backend
@@ -294,17 +187,14 @@ LoRA r32 fine-tuning이 아동 음성 인식에 매우 효과적임을 확인했
 
 ---
 
+# [서비스 소개 및 시연 영상](https://www.youtube.com/watch?v=J6CdmfQZW6Q&feature=youtu.be)
+
+---
+
 ## 라이선스
 
 교육 목적으로 제작된 프로젝트입니다.
 
 ---
 
-## 문의
-
-프로젝트 관련 문의사항은 GitLab 이슈를 통해 등록해주세요.
-
----
-
-**Last Updated**: 2025-11-16
 **Project**: SSAFY 13기 특화 프로젝트
