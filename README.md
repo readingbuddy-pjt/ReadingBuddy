@@ -70,7 +70,8 @@ AI 음성 인식 기술을 활용하여 자음과 모음 발음을 정확하게 
 
 ## 시스템 아키텍처
 
-<img width="977" height="799" alt="diagram-export-2026 -2 -25 -오전-1_26_45" src="https://github.com/user-attachments/assets/41ad90b8-0692-4ffa-a984-7e033c612e00" />
+<img width="960" height="569" alt="diagram-export-2026 -4 -15 -오전-1_53_26" src="https://github.com/user-attachments/assets/1c91d451-683e-4429-9898-c646e27bf8a9" />
+
 
 ---
 
